@@ -1,0 +1,19 @@
+.stage {
+  position: relative;
+  background-color: black;
+  border: 2px solid goldenrod;
+  cursor: crosshair;
+  color: goldenrod;
+}
+
+#start-screen, #end-screen, #win-screen {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  font-family: 'Aldrich'
+}
+

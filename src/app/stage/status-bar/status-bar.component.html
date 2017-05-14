@@ -1,0 +1,67 @@
+<div
+  id="status-bar"
+  [ngStyle]="style">
+  
+  <div style="display: flex">
+    <div id="hp-block">
+      <span>HP </span>
+      <span [innerText]="player.getHp() + ' / ' + player.getHpMax()" [ngStyle]="{'min-width': tileSize * 2 + 'px'}"></span>
+      <div 
+        id="hp-bar-outer"
+        [ngStyle]="{'width': tileSize * 3 + 'px', 'height': tileSize / 3 + 'px'}">
+        <div 
+        id="hp-bar-inner"
+        [ngStyle]="{'width': player.getHp() / player.getHpMax() * tileSize * 3 + 'px', 'height': tileSize / 3 + 'px'}"></div>
+      </div>
+    </div>
+
+    <div id="potion-counter">
+      <div id="potion-icon" style="width: 32px; height: 32px;"></div>
+      <span >x</span>
+      <span [innerText]="player.potions.length"></span>
+    </div>
+  </div>
+
+  <div id="xp-block">
+    <span>LVL </span>
+    <span [innerText]="player.getLvl()"></span>
+    <div 
+      id="xp-bar-outer"
+      [ngStyle]="{'width': tileSize * 4 + 'px', 'height': tileSize / 3 + 'px'}">
+      <div 
+      id="xp-bar-inner"
+      [ngStyle]="{'width': player.getXp() / player.getToNextLvl() * tileSize * 4 + 'px', 'height': tileSize / 3 + 'px'}"></div>
+    </div>
+    <span [innerText]="'XP ' + player.getXp()  + '/' +  player.getToNextLvl()"></span>
+  </div>
+
+  <div id="stat-block">
+    <div>
+      <span>ATK</span>
+      <span [innerText]="player.getTotalAtk()"></span>
+    </div>
+    <div>
+      <span>DEF</span>
+      <span [innerText]="player.getTotalDef()"></span>
+    </div>
+  </div>
+
+   <div id="equipment-block">
+    <img 
+      [width]="tileSize" 
+      [height]="tileSize" 
+      [class]="player.currentEquipment.weapon ? player.currentEquipment.weapon.getClassName() : ''">
+    <img 
+      [width]="tileSize" 
+      [height]="tileSize" 
+      [class]="player.currentEquipment.armor ? player.currentEquipment.armor.getClassName() : ''">
+    <img
+      [width]="tileSize" 
+      [height]="tileSize" 
+      [class]="player.currentEquipment.shield ? player.currentEquipment.shield.getClassName() : ''">
+    <div>
+      <small style="margin: 0px;">Current Equipment</small>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,49 @@
+<div 
+  class="stage"
+  [ngStyle]="style">
+  <ng-container [ngSwitch]="gameStatus">
+    
+  <ng-container *ngSwitchCase="'PLAY'">
+    <ng-container *ngFor="let screenLine of screen; let x = index">
+      <ng-container *ngFor="let screenTile of screenLine; let y = index">   
+        <app-stage-tile 
+          [screenX]="x"
+          [screenY]="y"
+          [tileSize]="tileSize"></app-stage-tile>
+        <app-stage-entity-tile
+          [screenX]="x"
+          [screenY]="y"
+          [tileSize]="tileSize"></app-stage-entity-tile>
+          <app-stage-fog
+            *ngIf="fog"
+            [screenX]="x"
+            [screenY]="y"
+            [tileSize]="tileSize"></app-stage-fog>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'START'">
+    <div id="start-screen">
+      <h2>welcome to ng-rogue</h2>
+      <h3>press [enter] to play</h3>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'END'">
+    <div id="end-screen">
+      <h2 style="color: red;">another brave soul has fallen.</h2>
+      <h3>press [enter] to restart</h3>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'WIN'" id="win-screen">
+    <div id="win-screen">
+      <h2>you sent those fiends to where they belongs !</h2>
+      <h3>press [enter] to restart</h3>
+    </div>
+  </ng-container>
+
+  </ng-container>
+</div>
+

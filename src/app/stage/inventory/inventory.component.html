@@ -1,0 +1,53 @@
+<div
+  id="inventory"
+  style="background-color: black;"
+  [ngStyle]="{'width': (tileSize * width / 4) + 16 + 'px', 'height': tileSize * height + 'px'}">
+
+  <div id="bag">
+    <p style="text-align: center">Inventory</p>
+    <hr>
+    <p class="bag-row-label">Weapons</p>
+    <div id="weapons" class="bag-row">
+      <img 
+        *ngFor="let weapon of player.weapons; let i = index" 
+        [ngClass]="weapon.getClassName()" 
+        (click)="onWeaponClick(i)"
+        (mouseover)="onHover(player.getWeapons()[i])"
+        (mouseleave)="onLeave()"
+        width="32" 
+        height="32"
+        style="margin-right: 1px">
+    </div>
+    <hr>
+    <p class="bag-row-label">Armors</p>
+    <div id="armors" class="bag-row">
+      <img
+        *ngFor="let armor of player.armors; let i = index" 
+        [ngClass]="armor.getClassName()" 
+        (click)="onArmorClick(i)"
+        (mouseover)="onHover(player.getArmors()[i])"
+        (mouseleave)="onLeave()"
+        width="32" 
+        height="32"
+        style="margin-right: 1px">
+    </div>
+    <hr>
+    <p class="bag-row-label">Shields</p>
+    <div id="shields" class="bag-row">
+      <img 
+        *ngFor="let shield of player.shields; let i = index" 
+        [ngClass]="shield.getClassName()" 
+        (click)="onShieldClick(i)"
+        (mouseover)="onHover(player.getShields()[i])"
+        (mouseleave)="onLeave()"
+        width="32" 
+        height="32"
+        style="margin-right: 1px">
+    </div>
+    <hr>
+  </div>
+
+  <div id="info" #info>
+
+  </div>
+</div>

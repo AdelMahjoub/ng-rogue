@@ -1,0 +1,14 @@
+<div *ngIf="entity">
+  <div 
+    class="entity-hp-bar"
+    *ngIf="entity.getType() !== 'item' && entity.getGenre() !== 'player'" 
+    [ngStyle]="{'width': tileSize + 'px', 'height': 1 + 'px', 'top': screenY * tileSize + 'px', 'left': screenX * tileSize + 'px'}">
+    <div [ngStyle]="{'width': entity.getHp() / entity.getHpMax() * tileSize + 'px', 'height': 1 + 'px'}" style="background-color: red"></div>
+  </div>
+  <div 
+    class="tile"
+    [ngClass]="entity.getClassName()" 
+    [ngStyle]="style"
+    (mouseover)="onHover(entity)"
+    (mouseleave)="onLeave()"></div>
+</div>

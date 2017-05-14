@@ -1,0 +1,46 @@
+#status-bar {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  background-color: black;
+  border: 2px solid goldenrod;
+  border-top: none;
+  font-size: 12px;
+  color: goldenrod;
+}
+
+#hp-block, #stat-block, #xp-block, #potion-counter, #equipment-block {
+  padding: 5px;
+}
+
+#hp-block #hp-bar-outer {
+  border: 1px solid white;
+}
+
+#hp-block #hp-bar-inner {
+  background-color: red;
+}
+
+#xp-block #xp-bar-outer {
+  border: 1px solid white;
+}
+
+#xp-block #xp-bar-inner {
+  background-color: green;
+}
+
+#potion-counter #potion-icon {
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat -64px -32px;
+}
+
+.long-sword {
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat 0px -64px;
+}
+
+.leather-armor {
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat -32px -64px;
+}
+
+.warrior-shield {
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat -64px -64px;
+}

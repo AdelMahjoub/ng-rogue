@@ -1,0 +1,41 @@
+.long-sword {
+  cursor: pointer;
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat 0px -64px;
+}
+
+.leather-armor {
+  cursor: pointer;
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat -32px -64px;
+}
+
+.warrior-shield {
+  cursor: pointer;
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat -64px -64px;
+}
+
+#inventory {
+  border: 2px solid goldenrod;
+  border-left: none;
+  color: white;
+  font-size: 9px;
+}
+
+#bag {
+  padding: 5px;
+  color: goldenrod;
+}
+
+.bag-row {
+  height: 32px;
+}
+
+.bag-row-label {
+  margin: 0;
+}
+
+#info {
+  padding: 10px;
+  text-transform: capitalize;
+  font-size: 12px;
+  color: goldenrod;
+}

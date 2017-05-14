@@ -1,0 +1,17 @@
+nav {
+  display: flex;
+  width: 100%;
+  height: 32px;
+  background-color: black;
+  padding: 20px 20px 20px 0;
+  margin-bottom: 32px;
+  text-transform: capitalize;
+}
+
+a {
+  color: goldenrod;
+  border: none;
+  background-color: inherit;
+  outline: none;
+  text-decoration: none;
+}

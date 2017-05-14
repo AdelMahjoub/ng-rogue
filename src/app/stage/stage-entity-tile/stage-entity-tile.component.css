@@ -1,0 +1,40 @@
+.tile {
+  position: absolute;
+}
+
+.player {
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat 0px 0px;
+}
+
+.goblin{
+ background: url("../../../assets/spritesTilesSheet.png") no-repeat -32px 0px;
+}
+
+.young-dragon {
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat -64px 0px;
+}
+
+.health-potion {
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat -64px -32px;
+}
+
+.long-sword {
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat 0px -64px;
+}
+
+.leather-armor {
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat -32px -64px;
+}
+
+.warrior-shield {
+  background: url("../../../assets/spritesTilesSheet.png") no-repeat -64px -64px;
+}
+
+.entity-hp-bar {
+  position: absolute;
+  border: 1px solid black;
+}
+
+
+
+
