@@ -45,5 +45,49 @@
   </ng-container>
 
   </ng-container>
+
+  <div id="help" *ngIf="showHelp">
+    <h2>How to play:</h2>
+    <h3>Player movements:</h3>
+    <h4>Qwerty keyboard</h4>
+    <p><strong style="color: green;">[W] or [&uarr;]</strong>: move up</p>
+    <p><strong style="color: green;">[S] or [&darr;]</strong>: move down</p>
+    <p><strong style="color: green;">[A] or [&uarr;]</strong>: move left</p>
+    <p><strong style="color: green;">[D] or [&rarr;]</strong>: move right</p>
+    <h4>Azerty keyboard</h4>
+    <p><strong style="color: green;">[Z] or [&uarr;]</strong>: move up</p>
+    <p><strong style="color: green;">[S] or [&darr;]</strong>: move down</p>
+    <p><strong style="color: green;">[Q] or [&uarr;]</strong>: move left</p>
+    <p><strong style="color: green;">[D] or [&rarr;]</strong>: move right</p>
+    <h3>Engaging foes</h3>
+    <p>Move into a foe to strike it.</p>
+    <p>Each time you hit a foe it will riposte.</p>
+    <h3>Player and foes stats</h3>
+    <p><strong style="color: green;">Hp</strong> Current health points, if it reaches 0, the foe or player die.</p>
+    <p><strong style="color: green;">HpMax</strong> Maximum health points</p>
+    <p><strong style="color: green;">Atk</strong> Base damage dealt.</p>
+    <p><strong style="color: green;">Def</strong> Base damage absorption.</p>
+    <p><strong style="color: green;">Lvl</strong> Overall strength representation, the higher the lvl the higher the stats.</p>
+    <p><strong style="color: green;">Xp</strong> Experience points, if it reaches a certain amount, the player level increase.</p>
+    <h3>Player Actions</h3>
+    <h4>Picking items</h4>
+    <p>Move into an item on the game map to pick it.</p>
+    <p>The available number of potions is shown in the bottom section of the screen, under the potion icon.</p>
+    <p>Picked weapons, armors and shields are shown in their respective bags, in the inventory, in the right section of the screen.</p>
+    <p>A bag cannot hold more than 5 items, the number of potions you can pick in unlimited.</p>
+    <h4>Drinking potions</h4>
+    <p>Press <strong style="color: green">[P] or [left-click]</strong> on the potion icon to drink a potion and restore some Hp.</p>
+    <h4>Equip / Un-Equip</h4>
+    <p><strong style="color: green">[left-click]</strong> on a piece of equipment, available in the inventory section, to equip it.</p>
+    <p>The piece of equipment will be moved from the inventory to its reserved slot.</p>
+    <p>Currently equipped items are shown in the bottom section of the screen under <strong style="color: red">Current Equipment.</strong></p>
+    <p><strong style="color: green">[left-click]</strong> on an equipped item to un-equip it. It will be moved into the inventory.</p>
+    <p>If an equipment slot is not empty, it will be switched with the clicked piece of equipment of the inventory.</p>
+    <h4>Discard Items</h4>
+    <p><strong style="color: green">[right-click]</strong> on any piece of equipment to definitely discard it.</p>
+    <p>The player will get a new potion each time he discards an item.</p>
+    <h4>Ending Game</h4>
+    <p>The game ends when the player HP reach 0 or when the dungeon boss is defeated.</p>
+  </div>
 </div>
 

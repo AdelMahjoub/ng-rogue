@@ -14,6 +14,7 @@ export class GameService {
   gameStatus = new Subject<string>();
   info = new Subject<string>();
   toggleFog = new Subject<any>();
+  help = new Subject<any>();
 
   constructor() { }
 

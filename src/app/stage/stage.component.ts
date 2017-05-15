@@ -11,7 +11,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class StageComponent implements OnInit, OnDestroy {
 
   gameStatusSubscription: Subscription;
+  gameHelpSubscription: Subscription;
   gameFogSubscription: Subscription;
+
+  showHelp = false;
 
   public width: number; // game screen width
   public height: number; // game screen height
@@ -49,6 +52,12 @@ export class StageComponent implements OnInit, OnDestroy {
     this.gameFogSubscription = this.gameService.toggleFog.subscribe(
       () => {
         this.fog = !this.fog
+      }
+    )
+
+    this.gameHelpSubscription = this.gameService.help.subscribe(
+      () => {
+        this.showHelp = !this.showHelp;
       }
     )
 

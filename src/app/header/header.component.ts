@@ -11,7 +11,6 @@ export class HeaderComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   gameStatus: string;
-  showHelp = false;
 
   ngOnInit() {
      this.gameService.gameStatus.subscribe(
@@ -26,7 +25,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onToggleHelp() {
-    this.showHelp = !this.showHelp;
+    this.gameService.help.next();
   }
 
   onToggleSound() {
