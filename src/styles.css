@@ -450,3 +450,134 @@ html, body {
   background-color: black;
  font-family: 'Audiowide', cursive;
 }
+
+.player {
+ 
+  background: url("./assets/sprites.png") no-repeat 0px 0px;
+}
+
+.goblin {
+ 
+  background: url("./assets/sprites.png") no-repeat -32px 0px;
+}
+
+.giant-snake {
+ 
+  background: url("./assets/sprites.png") no-repeat -64px 0px;
+}
+
+/*.wall {
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: url("./assets/sprites.png") no-repeat 0px -32px;
+}
+
+.ground {
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: url("./assets/sprites.png") no-repeat -32px -32px;
+}*/
+
+.health-potion {
+  
+  background: url("./assets/sprites.png") no-repeat -64px -32px;
+}
+
+.long-sword {
+  
+  background: url("./assets/sprites.png") no-repeat 0px -64px;
+}
+
+.leather-armor {
+ 
+  background: url("./assets/sprites.png") no-repeat -32px -64px;
+}
+
+.warrior-shield {
+ 
+  background: url("./assets/sprites.png") no-repeat -64px -64px;
+}
+
+.damascus-sword {
+ 
+  background: url("./assets/sprites.png") no-repeat 0px -96px;
+}
+
+.dragon-armor {
+ 
+  background: url("./assets/sprites.png") no-repeat -32px -96px;
+}
+
+.dragon-shield {
+  
+  background: url("./assets/sprites.png") no-repeat -64px -96px;
+}
+
+.wooden-stick {
+  
+  background: url("./assets/sprites.png") no-repeat 0px -128px;
+}
+
+.worn-cloth {
+ 
+  background: url("./assets/sprites.png") no-repeat -32px -128px;
+}
+
+.wooden-shield {
+ 
+  background: url("./assets/sprites.png") no-repeat -64px -128px;
+}
+
+.gladiator-axe {
+  
+  background: url("./assets/sprites.png") no-repeat 0px -160px;
+}
+
+.gladiator-plate {
+ 
+  background: url("./assets/sprites.png") no-repeat -32px -160px;
+}
+
+.gladiator-shield {
+  
+  background: url("./assets/sprites.png") no-repeat -64px -160px;
+}
+
+.spiqued-mace {
+  
+  background: url("./assets/sprites.png") no-repeat 0px -192px;
+}
+
+.templar-chainmail {
+ 
+  background: url("./assets/sprites.png") no-repeat -32px -192px;
+}
+
+.templar-shield {
+  
+  background: url("./assets/sprites.png") no-repeat -64px -192px;
+}
+
+.rat {
+ 
+  background: url("./assets/sprites.png") no-repeat 0px -224px;
+}
+
+.goblin-chieftain {
+ 
+  background: url("./assets/sprites.png") no-repeat -32px -224px;
+}
+
+.skeleton {
+ 
+  background: url("./assets/sprites.png") no-repeat -64px -224px;
+}
+
+.dragon {
+  
+  background: url("./assets/sprites.png") no-repeat 0px -256px;
+}

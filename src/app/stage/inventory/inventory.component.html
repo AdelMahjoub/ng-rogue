@@ -11,13 +11,13 @@
       <img 
         *ngFor="let weapon of player.weapons; let i = index" 
         [ngClass]="weapon.getClassName()" 
-        (click)="onWeaponClick(i)"
+        (click)="onWeaponClick(weapon)"
         (contextmenu)="onDiscardItem($event, weapon, player.weapons)"
         (mouseover)="onHover(player.getWeapons()[i])"
         (mouseleave)="onLeave()"
         width="32" 
         height="32"
-        style="margin-right: 1px">
+        style="margin-right: 1px; cursor: pointer;">
     </div>
     <hr>
     <p class="bag-row-label">Armors</p>
@@ -25,13 +25,13 @@
       <img
         *ngFor="let armor of player.armors; let i = index" 
         [ngClass]="armor.getClassName()" 
-        (click)="onArmorClick(i)"
+        (click)="onArmorClick(armor)"
          (contextmenu)="onDiscardItem($event, armor, player.armors)"
         (mouseover)="onHover(player.getArmors()[i])"
         (mouseleave)="onLeave()"
         width="32" 
         height="32"
-        style="margin-right: 1px">
+        style="margin-right: 1px; cursor: pointer;">
     </div>
     <hr>
     <p class="bag-row-label">Shields</p>
@@ -39,13 +39,13 @@
       <img 
         *ngFor="let shield of player.shields; let i = index" 
         [ngClass]="shield.getClassName()" 
-        (click)="onShieldClick(i)"
+        (click)="onShieldClick(shield)"
         (contextmenu)="onDiscardItem($event, shield, player.shields)"
         (mouseover)="onHover(player.getShields()[i])"
         (mouseleave)="onLeave()"
         width="32" 
         height="32"
-        style="margin-right: 1px">
+        style="margin-right: 1px; cursor: pointer;">
     </div>
     <hr>
   </div>

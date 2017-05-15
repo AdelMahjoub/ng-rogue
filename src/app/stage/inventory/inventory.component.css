@@ -1,4 +1,4 @@
-.long-sword {
+/*.long-sword {
   cursor: pointer;
   background: url("../../../assets/spritesTilesSheet.png") no-repeat 0px -64px;
 }
@@ -11,7 +11,7 @@
 .warrior-shield {
   cursor: pointer;
   background: url("../../../assets/spritesTilesSheet.png") no-repeat -64px -64px;
-}
+}*/
 
 #inventory {
   border: 2px solid goldenrod;

@@ -6,7 +6,7 @@
   background: url("../../../assets/spritesTilesSheet.png") no-repeat 0px 0px;
 }
 
-.goblin{
+/*.goblin{
  background: url("../../../assets/spritesTilesSheet.png") no-repeat -32px 0px;
 }
 
@@ -28,7 +28,7 @@
 
 .warrior-shield {
   background: url("../../../assets/spritesTilesSheet.png") no-repeat -64px -64px;
-}
+}*/
 
 .entity-hp-bar {
   position: absolute;

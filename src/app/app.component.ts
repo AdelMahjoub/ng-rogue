@@ -17,9 +17,6 @@ export class AppComponent implements OnInit, OnDestroy {
   gameStatus = 'START';
   gameStatusSubscription: Subscription;
 
-  goblins = 20;
-  potions = 10;
-
   constructor(
     private dungeonService: DungeonService,
     private entityService: EntityService,
@@ -51,19 +48,36 @@ export class AppComponent implements OnInit, OnDestroy {
     this.entityService.addPlayer();
     this.cameraService.initPosition();
 
-    for(let i = 0; i < this.goblins; i++) {
-      this.entityService.addActor(template.goblin);
-    }
+    Object.keys(template).forEach(key => {
+      let population = template[key]['population'];
+      let type = template[key]['type'];
+      switch(type) {
+        case 'actor':
+          for(let i = 0; i < population; i++) {
+            this.entityService.addActor(template[key]);
+          }
+        break;
+        case 'item':
+          for(let i = 0; i < population; i++) {
+            this.entityService.addItem(template[key]);
+          }
+        break;
+      }
+    })
 
-    this.entityService.addActor(template.youngDragon);
+    // for(let i = 0; i < this.goblins; i++) {
+    //   this.entityService.addActor(template.goblin);
+    // }
 
-    for(let i = 0; i < this.potions; i++) {
-      this.entityService.addItem(template.healthPotion);
-    }
+    // this.entityService.addActor(template.giantSnake);
 
-    this.entityService.addItem(template.leatherArmor);
-    this.entityService.addItem(template.longSword);
-    this.entityService.addItem(template.warriorShield);
+    // for(let i = 0; i < this.potions; i++) {
+    //   this.entityService.addItem(template.healthPotion);
+    // }
+
+    // this.entityService.addItem(template.leatherArmor);
+    // this.entityService.addItem(template.longSword);
+    // this.entityService.addItem(template.warriorShield);
   }
 
   handleKeyDown(e: KeyboardEvent): void {

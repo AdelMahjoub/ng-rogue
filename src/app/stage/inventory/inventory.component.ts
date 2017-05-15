@@ -45,45 +45,48 @@ export class InventoryComponent implements OnInit, OnDestroy {
     this.gameInfoSubscription.unsubscribe();
   }
 
-  onWeaponClick(index: number): void {
+  onWeaponClick(weapon: Item): void {
     if(!this.player.currentEquipment.weapon) {
-      this.player.currentEquipment.weapon = this.player.getWeapons()[index];
-      this.player.getWeapons().splice(index, 1);
-      this.player.equip(this.player.currentEquipment.weapon);
+      this.player.currentEquipment.weapon = weapon;
+      this.player.weapons.splice(this.player.weapons.indexOf(weapon), 1);
+      this.player.equip(weapon);
     } else {
       let currentWeapon = this.player.currentEquipment.weapon;
-      let newWeapon = this.player.getWeapons()[index];
-      this.player.getWeapons().splice(index, 1);
-      this.player.getWeapons().push(currentWeapon);
-      this.player.currentEquipment.weapon = newWeapon;
+      this.player.weapons.splice(this.player.weapons.indexOf(weapon), 1);
+      this.player.weapons.push(currentWeapon);
+      this.player.unEquip(currentWeapon);
+      this.player.currentEquipment.weapon = weapon;
+      this.player.equip(weapon);
     }
   }
 
-  onArmorClick(index: number): void {
+  onArmorClick(armor: Item): void {
     if(!this.player.currentEquipment.armor) {
-      this.player.currentEquipment.armor = this.player.getArmors()[index];
-      this.player.getArmors().splice(index, 1);
-      this.player.equip(this.player.currentEquipment.armor);
+      this.player.currentEquipment.armor = armor;
+      this.player.armors.splice(this.player.armors.indexOf(armor), 1);
+      this.player.equip(armor);
     } else {
       let currentArmor = this.player.currentEquipment.armor;
-      let newArmor = this.player.getArmors()[index];
-      this.player.getArmors().splice(index, 1);
-      this.player.getArmors().push(currentArmor);
-      this.player.currentEquipment.armor = newArmor;
+      this.player.armors.splice(this.player.armors.indexOf(armor), 1);
+      this.player.armors.push(currentArmor);
+      this.player.unEquip(currentArmor)
+      this.player.currentEquipment.armor = armor;
+      this.player.equip(armor);
     }
   }
 
-  onShieldClick(index: number): void {
+  onShieldClick(shield: Item): void {
     if(!this.player.currentEquipment.shield) {
-      this.player.currentEquipment.shield = this.player.getShields()[index];
-      this.player.getShields().splice(index, 1);
-      this.player.equip(this.player.currentEquipment.shield);
+      this.player.currentEquipment.shield = shield;
+      this.player.shields.splice(this.player.shields.indexOf(shield), 1);
+      this.player.equip(shield);
     } else {
       let currentShield = this.player.currentEquipment.shield;
-      let newShield = this.player.getShields()[index];
-      this.player.getShields().splice(index, 1);
-      this.player.getShields().push(currentShield);
-      this.player.currentEquipment.shield = newShield;
+      this.player.shields.splice(this.player.shields.indexOf(shield), 1);
+      this.player.shields.push(currentShield);
+      this.player.unEquip(currentShield)
+      this.player.currentEquipment.shield = shield;
+      this.player.equip(shield);
     }
   }
 

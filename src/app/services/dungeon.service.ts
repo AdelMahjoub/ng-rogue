@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DungeonService {
 
-  private width = 100;
-  private height = 100;
+  private width = 150;
+  private height = 150;
 
   private dungeonMap: Tile[][];
 
