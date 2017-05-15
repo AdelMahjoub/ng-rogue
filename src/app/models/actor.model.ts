@@ -3,13 +3,13 @@ import { Entity } from './entity.model';
 
 export class Actor extends Entity {
 
-  protected atkBonus = 0;
-  protected defBonus = 0;
-  protected potions: Item[] = [];
-  protected weapons: Item[] = [];
-  protected armors: Item[] = [];
-  protected shields: Item[] = [];
-  protected maxEquipment = 5;
+  public atkBonus = 0;
+  public defBonus = 0;
+  public potions: Item[] = [];
+  public weapons: Item[] = [];
+  public armors: Item[] = [];
+  public shields: Item[] = [];
+  public maxEquipment = 5;
   public armorsFull = false;
   public shieldsFull = false;
   public weaponsFull = false;
@@ -97,7 +97,7 @@ export class Actor extends Entity {
   }
 
   drinkPotion() {
-    if(this.potions.length > 0) {
+    if(this.potions.length > 0 && this.hp < this.hpMax) {
       let potion = this.potions[0]
       this.updateHp(potion.getHp());
       this.potions.splice(0, 1);
@@ -115,6 +115,21 @@ export class Actor extends Entity {
         break;
       case 'shield':
         this.defBonus += equipment.getDef();
+        break; 
+    }
+  }
+
+
+  unEquip(equipment: Item): void {
+    switch(equipment.getGenre()) {
+      case 'weapon':
+        this.atkBonus -= equipment.getAtk();
+        break;
+      case 'armor':
+        this.defBonus -= equipment.getDef();
+        break;
+      case 'shield':
+        this.defBonus -= equipment.getDef();
         break; 
     }
   }

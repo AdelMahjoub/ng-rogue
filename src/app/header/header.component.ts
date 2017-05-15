@@ -1,3 +1,4 @@
+import { GameService } from './../services/game.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private gameService: GameService) { }
+
+  gameStatus: string;
+  showHelp = false;
 
   ngOnInit() {
+     this.gameService.gameStatus.subscribe(
+      (status: string) => {
+        this.gameStatus = status;
+      }
+    )
+  }
+
+  onToggleFog() {
+    this.gameService.toggleFog.next();
+  }
+
+  onToggleHelp() {
+    this.showHelp = !this.showHelp;
+  }
+
+  onToggleSound() {
+
   }
 
 }

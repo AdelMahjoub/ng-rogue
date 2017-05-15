@@ -1,5 +1,11 @@
 <nav>
   <div>
     <h1><a href="https://github.com/AdelMahjoub/ng-rogue" target="_blank">ng-rogue</a></h1>
+    <div *ngIf="gameStatus === 'PLAY'">
+      <button>Help</button>
+      <button (click)="onToggleFog()">Toggle fog</button>
+      <button>toggle sound</button>
+    </div>
   </div>
+  
 </nav>

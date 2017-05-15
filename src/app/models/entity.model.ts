@@ -2,17 +2,17 @@ import { Tile } from './tile.model';
 
 export class Entity extends Tile {
   
-  protected hp: number; // current hit points, entity is destroyd when hp reach 0
-  protected hpMax: number; // maximum hit points, current hit points cannot exceed max hit points
-  protected atk: number; // current attack strengh, damage dealt
-  protected def: number; // current defense, damage absorbtion
-  protected lvl: number; // current lvl, entity growth
-  protected xp: number; // current experience points
-  protected toNextLvl: number; // experience needed to reach the next level
-  protected destructible: boolean; // entity can be destroyed or not
-  protected type: string; // generic type
-  protected genre: string; // specific type
-  protected name: string;
+  public hp: number; // current hit points, entity is destroyd when hp reach 0
+  public hpMax: number; // maximum hit points, current hit points cannot exceed max hit points
+  public atk: number; // current attack strengh, damage dealt
+  public def: number; // current defense, damage absorbtion
+  public lvl: number; // current lvl, entity growth
+  public xp: number; // current experience points
+  public toNextLvl: number; // experience needed to reach the next level
+  public destructible: boolean; // entity can be destroyed or not
+  public type: string; // generic type
+  public genre: string; // specific type
+  public name: string;
 
   constructor(props) {
     super(props);

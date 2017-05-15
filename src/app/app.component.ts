@@ -49,7 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.dungeonService.buildMap();
     this.entityService.init();
     this.entityService.addPlayer();
-    this.cameraService.updatePosition();
+    this.cameraService.initPosition();
 
     for(let i = 0; i < this.goblins; i++) {
       this.entityService.addActor(template.goblin);

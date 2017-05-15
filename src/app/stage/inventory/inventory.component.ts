@@ -1,3 +1,4 @@
+import { template } from './../../models/template.model';
 import { Subscription } from 'rxjs/Subscription';
 import { Item } from './../../models/item.model';
 import { GameService } from './../../services/game.service';
@@ -99,6 +100,13 @@ export class InventoryComponent implements OnInit, OnDestroy {
 
   onLeave() {
     (<HTMLElement>this.itemInfo.nativeElement).innerHTML = '';
+  }
+
+  onDiscardItem(e: Event, item: Item, bag: Item[]) {
+    e.preventDefault()
+    bag.splice(bag.indexOf(item), 1);
+    this.player.potions.push(new Item(template.healthPotion));
+    item = null;
   }
 
 }

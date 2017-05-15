@@ -12,6 +12,7 @@
         *ngFor="let weapon of player.weapons; let i = index" 
         [ngClass]="weapon.getClassName()" 
         (click)="onWeaponClick(i)"
+        (contextmenu)="onDiscardItem($event, weapon, player.weapons)"
         (mouseover)="onHover(player.getWeapons()[i])"
         (mouseleave)="onLeave()"
         width="32" 
@@ -25,6 +26,7 @@
         *ngFor="let armor of player.armors; let i = index" 
         [ngClass]="armor.getClassName()" 
         (click)="onArmorClick(i)"
+         (contextmenu)="onDiscardItem($event, armor, player.armors)"
         (mouseover)="onHover(player.getArmors()[i])"
         (mouseleave)="onLeave()"
         width="32" 
@@ -38,6 +40,7 @@
         *ngFor="let shield of player.shields; let i = index" 
         [ngClass]="shield.getClassName()" 
         (click)="onShieldClick(i)"
+        (contextmenu)="onDiscardItem($event, shield, player.shields)"
         (mouseover)="onHover(player.getShields()[i])"
         (mouseleave)="onLeave()"
         width="32" 
@@ -47,7 +50,6 @@
     <hr>
   </div>
 
-  <div id="info" #info>
+  <div id="info" #info></div>
 
-  </div>
 </div>
