@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AudioService {
 
-  attack = new Audio('../assets/sfx/attack.mp3');
-  enterDungeon = new Audio('../assets/sfx/enter-dungeon.mp3');
-  lvlUp = new Audio('../assets/sfx/lvl-up.mp3');
-  pickArmor = new Audio('../assets/sfx/pick-armor.mp3');
-  pickShield = new Audio('../assets/sfx/pick-shield.mp3');
-  pickWeapon = new Audio('../assets/sfx/pick-weapon.mp3');
-  potion = new Audio('../assets/sfx/potion.mp3');
-  toggleHelp = new Audio('../assets/sfx/toggle-help.mp3');
+  attack = new Audio('./assets/sfx/attack.mp3');
+  enterDungeon = new Audio('./assets/sfx/enter-dungeon.mp3');
+  lvlUp = new Audio('./assets/sfx/lvl-up.mp3');
+  pickArmor = new Audio('./assets/sfx/pick-armor.mp3');
+  pickShield = new Audio('./assets/sfx/pick-shield.mp3');
+  pickWeapon = new Audio('./assets/sfx/pick-weapon.mp3');
+  potion = new Audio('./assets/sfx/potion.mp3');
+  toggleHelp = new Audio('./assets/sfx/toggle-help.mp3');
 
 
   constructor() {

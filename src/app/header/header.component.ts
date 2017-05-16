@@ -39,6 +39,9 @@ export class HeaderComponent implements OnInit {
   onToggleSound() {
     this.audioService.toggleSound(this.soundEnabled);
     this.soundEnabled = !this.soundEnabled;
+    this.gameService.historyMessage.next(`
+      <p style="color: lightblue">${this.soundEnabled ? 'sound enabled' : 'sound disabled'}</p>
+    `)
   }
 
 }
