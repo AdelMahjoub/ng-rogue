@@ -22,7 +22,6 @@ export class StageFogComponent implements OnInit {
   opacity: number;
 
   cameraSubscription: Subscription;
-  gameInfoSubscription: Subscription;
   
   constructor(
     private entityService: EntityService,

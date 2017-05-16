@@ -16,7 +16,10 @@ export class GameService {
   historyMessage = new Subject<string>();
   toggleFog = new Subject<any>();
   help = new Subject<any>();
+  helperMap = new Subject<any>();
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
 }

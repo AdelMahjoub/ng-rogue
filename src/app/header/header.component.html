@@ -2,9 +2,22 @@
   <div>
     <h1><a href="https://github.com/AdelMahjoub/ng-rogue" target="_blank">ng-rogue</a></h1>
     <div *ngIf="gameStatus === 'PLAY'">
-      <button (click)="onToggleHelp()">Toggle Help</button>
-      <button (click)="onToggleFog()">Toggle fog</button>
-      <button (click)="onToggleSound()">toggle sound</button>
+      <button (click)="onToggleHelp()">
+        Help
+        <span class="led" [ngClass]="help ? 'led-green' : 'led-red'"></span>
+      </button>
+      <button (click)="onToggleFog()">
+        Fog
+        <span class="led" [ngClass]="fog ? 'led-green' : 'led-red'"></span>
+      </button>
+      <button (click)="onToggleSound()">
+        Sound
+        <span class="led" [ngClass]="soundEnabled ? 'led-green' : 'led-red'"></span>
+      </button>
+      <button (click)="onToggleHelpMap()">
+        Dungeon Map
+        <span class="led" [ngClass]="dungeonMap ? 'led-green' : 'led-red'"></span>
+      </button>
     </div>
   </div>
 </nav>

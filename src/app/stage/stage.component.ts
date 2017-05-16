@@ -13,8 +13,10 @@ export class StageComponent implements OnInit, OnDestroy {
   gameStatusSubscription: Subscription;
   gameHelpSubscription: Subscription;
   gameFogSubscription: Subscription;
+  gameHelpMapSubscription: Subscription;
 
   showHelp = false;
+  showHelpMap = false;
 
   public width: number; // game screen width
   public height: number; // game screen height
@@ -61,10 +63,18 @@ export class StageComponent implements OnInit, OnDestroy {
       }
     )
 
+    this.gameHelpMapSubscription = this.gameService.helperMap.subscribe(
+      () => {
+        this.showHelpMap = !this.showHelpMap;
+      }
+    )
+
   }
 
   ngOnDestroy() {
     this.gameStatusSubscription.unsubscribe();
+    this.gameHelpSubscription.unsubscribe();
+    this.gameFogSubscription.unsubscribe();
   }
 
   initscreen(): void {

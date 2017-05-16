@@ -1,3 +1,4 @@
+import { HelperService } from './services/helper.service';
 import { StageFogComponent } from './stage/stage-fog/stage-fog.component';
 import { GameService } from './services/game.service';
 import { EntityService } from './services/entity.service';
@@ -16,6 +17,7 @@ import { StatusBarComponent } from './stage/status-bar/status-bar.component';
 import { InventoryComponent } from './stage/inventory/inventory.component';
 import { HeaderComponent } from './header/header.component';
 import { AudioService } from "app/services/audio.service";
+import { HelpMapComponent } from './stage/help-map/help-map.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { AudioService } from "app/services/audio.service";
     StatusBarComponent,
     InventoryComponent,
     HeaderComponent,
-    StageFogComponent
+    StageFogComponent,
+    HelpMapComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { AudioService } from "app/services/audio.service";
     CameraService,
     EntityService,
     GameService,
-    AudioService
+    AudioService,
+    HelperService
     ],
   bootstrap: [AppComponent]
 })

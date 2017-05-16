@@ -15,6 +15,9 @@ export class HeaderComponent implements OnInit {
 
   gameStatus: string;
   soundEnabled = true;
+  fog = true;
+  help = false;
+  dungeonMap = false;
 
   ngOnInit() {
      this.gameService.gameStatus.subscribe(
@@ -28,12 +31,14 @@ export class HeaderComponent implements OnInit {
     this.audioService.toggleHelp.currentTime = 0;
     this.audioService.toggleHelp.play();
     this.gameService.toggleFog.next();
+    this.fog = !this.fog;
   }
 
   onToggleHelp() {
     this.audioService.toggleHelp.currentTime = 0;
     this.audioService.toggleHelp.play();
     this.gameService.help.next();
+    this.help = !this.help;
   }
 
   onToggleSound() {
@@ -42,6 +47,11 @@ export class HeaderComponent implements OnInit {
     this.gameService.historyMessage.next(`
       <p style="color: lightblue">${this.soundEnabled ? 'sound enabled' : 'sound disabled'}</p>
     `)
+  }
+
+  onToggleHelpMap() {
+    this.gameService.helperMap.next();
+    this.dungeonMap = !this.dungeonMap;
   }
 
 }
