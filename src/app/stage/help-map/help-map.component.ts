@@ -78,7 +78,6 @@ export class HelpMapComponent implements OnInit, OnDestroy {
       () => {
         let playerX = this.entityService.getPlayer().getX();
         let playerY = this.entityService.getPlayer().getY();
-        this.helperService.helpMap[playerX][playerY].visited = true;
         this.worldMap[playerX][playerY].visited = true;
         this.updateWorldMap(playerX, playerY);
       }
@@ -87,6 +86,7 @@ export class HelpMapComponent implements OnInit, OnDestroy {
     this.gameStatusSubscription = this.gameService.gameStatus.subscribe(
       (status: string) => {
         this.gameStatus = status;
+        this.reset();
       }
     );
   }
@@ -127,6 +127,13 @@ export class HelpMapComponent implements OnInit, OnDestroy {
         this.ctx.fillRect(x * this.zoomLevel, y * this.zoomLevel, this.zoomLevel, this.zoomLevel);
       this.ctx.restore();
     this.ctx.closePath();
+  }
+
+  reset() {
+    this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+    this.helperService.initHelpMap();
+    this.worldMap = this.helperService.helpMap;
+    this.renderBackground();
   }
 
   ngOnDestroy() {
