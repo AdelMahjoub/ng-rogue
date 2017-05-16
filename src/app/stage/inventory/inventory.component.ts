@@ -1,3 +1,4 @@
+import { AudioService } from './../../services/audio.service';
 import { template } from './../../models/template.model';
 import { Subscription } from 'rxjs/Subscription';
 import { Item } from './../../models/item.model';
@@ -20,13 +21,17 @@ export class InventoryComponent implements OnInit, OnDestroy {
   player: Actor;
 
   gameInfoSubscription: Subscription;
+  combatMessageSubscription: Subscription;
 
   @ViewChild('info') itemInfo: ElementRef;
+  @ViewChild('combatLog') combatLog: ElementRef;
+
 
   constructor(
     private entityService: EntityService,
     private cameraService: CameraService,
-    private gameService: GameService) { }
+    private gameService: GameService,
+    private audioService: AudioService) { }
 
   ngOnInit() {
     this.width = this.cameraService.getWidth();
@@ -36,7 +41,16 @@ export class InventoryComponent implements OnInit, OnDestroy {
 
     this.gameInfoSubscription = this.gameService.info.subscribe(
       (info: string) => {
-        this.itemInfo.nativeElement.innerHTML = info;
+        (<HTMLElement>this.itemInfo.nativeElement).innerHTML = info;
+      }
+    )
+
+    this.combatMessageSubscription = this.gameService.historyMessage.subscribe(
+      (message: string) => {
+        let div = document.createElement('div');
+        div.style.paddingLeft = '2px';
+        div.innerHTML = message;
+        (<HTMLElement>this.combatLog.nativeElement).insertBefore(div, (<HTMLElement>this.combatLog.nativeElement).childNodes[0])
       }
     )
   }
@@ -46,6 +60,8 @@ export class InventoryComponent implements OnInit, OnDestroy {
   }
 
   onWeaponClick(weapon: Item): void {
+    this.audioService.pickWeapon.currentTime = 0;
+    this.audioService.pickWeapon.play();
     if(!this.player.currentEquipment.weapon) {
       this.player.currentEquipment.weapon = weapon;
       this.player.weapons.splice(this.player.weapons.indexOf(weapon), 1);
@@ -61,6 +77,8 @@ export class InventoryComponent implements OnInit, OnDestroy {
   }
 
   onArmorClick(armor: Item): void {
+    this.audioService.pickArmor.currentTime = 0;
+    this.audioService.pickArmor.play();
     if(!this.player.currentEquipment.armor) {
       this.player.currentEquipment.armor = armor;
       this.player.armors.splice(this.player.armors.indexOf(armor), 1);
@@ -76,6 +94,8 @@ export class InventoryComponent implements OnInit, OnDestroy {
   }
 
   onShieldClick(shield: Item): void {
+    this.audioService.pickShield.currentTime = 0;
+    this.audioService.pickShield.play();
     if(!this.player.currentEquipment.shield) {
       this.player.currentEquipment.shield = shield;
       this.player.shields.splice(this.player.shields.indexOf(shield), 1);
@@ -92,8 +112,8 @@ export class InventoryComponent implements OnInit, OnDestroy {
 
   onHover(item: Item) {
     const itemSpec = `
-      <h3>${item.getName()}</h3>
-      <h4>${item.getType()}: ${item.getGenre()}</h4>
+      <p>${item.getName()}</p>
+      <p>${item.getType()}: ${item.getGenre()}</p>
       <p>Attack bonus: <span>${item.getAtk()}<span></p>
       <p>Defense bonus: <span>${item.getDef()}<span></p>
       <p>Hp bonus: <span>${item.getHp()}<span></p>`;

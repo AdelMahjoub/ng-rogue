@@ -19,7 +19,7 @@
 
 #help {
   position: absolute;
-  overflow: scroll;
+  overflow-y: scroll;
   font-family: 'Aldrich';
   top: 0;
   left: 0;
@@ -30,4 +30,10 @@
   color: black;
   font-size: 14px;
 }
-
+#help::-webkit-scrollbar {
+  width: 6px;
+  background-color: black;
+} 
+#help::-webkit-scrollbar-thumb {
+  background-color: darkgoldenrod;
+}

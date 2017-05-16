@@ -76,9 +76,8 @@ export class StageFogComponent implements OnInit {
     let entity = this.entityService.getEntityAt(x, y)
     if(entity) {
       const entityInfo = `
-        <h3>${entity.getName()}</h3>
-        <h4>${entity.getType()}: ${entity.getGenre()}</h4>
-        <p>Lvl : <span>${entity.getLvl()}<span></p>
+        <p>${entity.getName()}</p>
+        <p>${entity.getType()}: ${entity.getGenre()}</p>
         <p>Atk : <span>${entity.getAtk()}<span></p>
         <p>Def : <span>${entity.getDef()}<span></p>
         <p>Hp  : <span>${entity.getHp()}<span></p>

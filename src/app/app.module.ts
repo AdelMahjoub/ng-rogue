@@ -15,6 +15,7 @@ import { StageEntityTileComponent } from './stage/stage-entity-tile/stage-entity
 import { StatusBarComponent } from './stage/status-bar/status-bar.component';
 import { InventoryComponent } from './stage/inventory/inventory.component';
 import { HeaderComponent } from './header/header.component';
+import { AudioService } from "app/services/audio.service";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HeaderComponent } from './header/header.component';
     DungeonService,
     CameraService,
     EntityService,
-    GameService
+    GameService,
+    AudioService
     ],
   bootstrap: [AppComponent]
 })

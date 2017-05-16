@@ -44,7 +44,7 @@ export class Actor extends Entity {
     return this.shields;
   }
 
-  loot(item: Item): void {
+  loot(item: Item, callback): void {
     switch(item.getGenre()) {
       case 'potion':
         this.potions.push(item);
@@ -54,6 +54,9 @@ export class Actor extends Entity {
           this.weapons.push(item);
         } else {
           this.weaponsFull = true;
+          callback.next(`
+            <p style="color: red;">Weapons bag is full.</p>
+          `);
         }
         break;
       case 'armor':
@@ -61,6 +64,9 @@ export class Actor extends Entity {
           this.armors.push(item);
         } else {
           this.armorsFull = true;
+          callback.next(`
+            <p style="color: red;">Armors bag is full.</p>
+          `)
         }
         break;
       case 'shield':
@@ -68,24 +74,48 @@ export class Actor extends Entity {
           this.shields.push(item);
         } else {
           this.shieldsFull = true;
+          callback.next(`
+            <p style="color: red;">Shields bag is full.</p>
+          `)
         }
         break;
     }
   }
 
-  dealDamage(target: Actor): void {
+  dealDamage(target: Actor, messageCallback): void {
     let damageToDeal = this.getTotalAtk();
     let damageAbsorbtion = target.getTotalDef();
     let damageDealt = Math.max(1, damageToDeal - damageAbsorbtion);
+    
     target.updateHp(-damageDealt);
+
+    switch(this.getGenre()) {
+      case 'player':
+        messageCallback.next(`
+          <p style="color: green;">${this.getName()} attacked <span style="color: orange;">${target.getName()}</span></p>
+          <p> and dealt <em style="color: red;">${damageDealt}</em> damage</p>    
+        `);
+        break;
+      default:
+        messageCallback.next(`
+          <p style="color: orange;">${this.getName()} attacked <span style="color: green;">${target.getName()}</span></p>
+          <p> and dealt <em style="color: red;">${damageDealt}</em> damage</p>    
+        `);
+    }
+   
   }
 
-  tryLvlUp(target: Actor): void {
+  tryLvlUp(target: Actor, sound: HTMLAudioElement, messageCallback): void {
     this.increaseXp(target.getXp());
     while(this.getXp() >= this.getToNextLvl()) {
       let lvlGain = ~~(this.getXp() / this.getToNextLvl());
       this.updateLvl(lvlGain);
       this.lvlUp();
+      sound.currentTime = 0;
+      sound.play();
+      messageCallback.next(`
+        <p style="color: gold;">LVL UP !</p>
+      `)
       this.updateToNextLvl(2);
     }
   }
@@ -96,12 +126,14 @@ export class Actor extends Entity {
     this.updateDef(1);
   }
 
-  drinkPotion() {
+  drinkPotion(sound: HTMLAudioElement) {
     if(this.potions.length > 0 && this.hp < this.hpMax) {
       let potion = this.potions[0]
       this.updateHp(potion.getHp());
       this.potions.splice(0, 1);
       potion = null;
+      sound.currentTime = 0;
+      sound.play();
     }
   }
 

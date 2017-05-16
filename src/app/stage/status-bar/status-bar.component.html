@@ -55,6 +55,8 @@
       [height]="tileSize" 
       [class]="player.currentEquipment.weapon ? player.currentEquipment.weapon.getClassName() : ''"
       (click)="onWeaponSlotClick(player.currentEquipment.weapon)"
+      (mouseover)="onHover(player.currentEquipment.weapon)"
+      (mouseleave)="onLeave()"
       (contextmenu)="onDiscardEquipment($event, player.currentEquipment.weapon)"
       style="cursor: pointer">
     <img 
@@ -62,6 +64,8 @@
       [height]="tileSize" 
       [class]="player.currentEquipment.armor ? player.currentEquipment.armor.getClassName() : ''"
       (click)="onArmorSlotClick(player.currentEquipment.armor)"
+      (mouseover)="onHover(player.currentEquipment.armor)"
+      (mouseleave)="onLeave()"
       (contextmenu)="onDiscardEquipment($event, player.currentEquipment.armor)"
       style="cursor: pointer">
     <img
@@ -69,6 +73,8 @@
       [height]="tileSize" 
       [class]="player.currentEquipment.shield ? player.currentEquipment.shield.getClassName() : ''"
       (click)="onShieldSlotClick(player.currentEquipment.shield)"
+      (mouseover)="onHover(player.currentEquipment.shield)"
+      (mouseleave)="onLeave()"
       (contextmenu)="onDiscardEquipment($event, player.currentEquipment.shield)"
       style="cursor: pointer">
     <div>

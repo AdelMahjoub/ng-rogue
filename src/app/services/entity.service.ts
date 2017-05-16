@@ -1,3 +1,4 @@
+import { AudioService } from 'app/services/audio.service';
 import { GameService } from './game.service';
 import { Item } from './../models/item.model';
 import { Subject } from 'rxjs/Subject';
@@ -17,11 +18,10 @@ export class EntityService {
 
   private entityMap: Entity[][];
 
-  private goblinsPopulation = 20;
-
   constructor(
     private dungeonService: DungeonService,
-    private gameService: GameService) {
+    private gameService: GameService,
+    private audioService: AudioService) {
     this.width = this.dungeonService.getWidth();
     this.height = this.dungeonService.getHeight();
   }
@@ -116,15 +116,25 @@ export class EntityService {
     } else {
       switch(targetEntity.getType()) {
         case 'item':
-          this.player.loot(targetEntity);
+          this.player.loot(targetEntity, this.gameService.historyMessage);
           switch(targetEntity.getGenre()) {
             case 'potion': 
               this.removeEntity(targetEntity);
+              this.gameService.historyMessage.next(`
+                <p style="color: green;">You picked a ${targetEntity.getName()}</p>
+              `);
+              this.audioService.potion.currentTime = 0;
+              this.audioService.potion.play();
               this.updatePlayerPosition(newX, newY);
               break;
             case 'weapon':
               if(!this.player.weaponsFull) {
+                this.gameService.historyMessage.next(`
+                  <p style="color: green;">You picked a ${targetEntity.getName()}</p>
+                `);
                 this.removeEntity(targetEntity);
+                this.audioService.pickWeapon.currentTime = 0;
+                this.audioService.pickWeapon.play();
                 this.updatePlayerPosition(newX, newY);
               } else {
                 this.switchEntityPositions(targetEntity, newX, newY);
@@ -132,7 +142,12 @@ export class EntityService {
               break;
             case 'armor':
               if(!this.player.armorsFull) {
+                this.gameService.historyMessage.next(`
+                  <p style="color: green;">You picked a ${targetEntity.getName()}</p>
+                `);
                 this.removeEntity(targetEntity);
+                this.audioService.pickArmor.currentTime = 0;
+                this.audioService.pickArmor.play();
                 this.updatePlayerPosition(newX, newY);
               } else {
                 this.switchEntityPositions(targetEntity, newX, newY);
@@ -140,7 +155,12 @@ export class EntityService {
               break;
             case 'shield':
               if(!this.player.shieldsFull) {
+                this.gameService.historyMessage.next(`
+                  <p style="color: green;">You picked a ${targetEntity.getName()}</p>
+                `);
                 this.removeEntity(targetEntity);
+                this.audioService.pickShield.currentTime = 0;
+                this.audioService.pickShield.play();
                 this.updatePlayerPosition(newX, newY);
               } else {
                 this.switchEntityPositions(targetEntity, newX, newY);
@@ -149,16 +169,18 @@ export class EntityService {
           }
           break;
         case 'actor':
-          this.player.dealDamage(<Actor>targetEntity);
+          this.player.dealDamage(<Actor>targetEntity, this.gameService.historyMessage);
+          this.audioService.attack.currentTime = 0;
+          this.audioService.attack.play();
           if(targetEntity.getHp() <= 0) {
-            this.player.tryLvlUp(<Actor>targetEntity);
+            this.player.tryLvlUp(<Actor>targetEntity, this.audioService.lvlUp, this.gameService.historyMessage);
             this.removeEntity(targetEntity);
             this.updatePlayerPosition(newX, newY);
             if(targetEntity.getGenre() === 'boss') {
               this.gameService.gameStatus.next(this.gameService.WIN);
             }
           } else {
-            (<Actor>targetEntity).dealDamage(this.player);
+            (<Actor>targetEntity).dealDamage(this.player, this.gameService.historyMessage);
             if(this.player.getHp() <= 0) {
               this.gameService.gameStatus.next(this.gameService.END);
             }

@@ -1,3 +1,4 @@
+import { AudioService } from 'app/services/audio.service';
 import { template } from './../../models/template.model';
 import { Item } from './../../models/item.model';
 import { GameService } from './../../services/game.service';
@@ -23,7 +24,8 @@ export class StatusBarComponent implements OnInit {
   constructor(
     private cameraService: CameraService,
     private entityService: EntityService,
-    private gameService: GameService) { }
+    private gameService: GameService,
+    private audioService: AudioService) { }
 
   ngOnInit() {
     this.tileSize = this.gameService.tileSize;
@@ -37,35 +39,53 @@ export class StatusBarComponent implements OnInit {
   }
 
   onWeaponSlotClick(weapon: Item): void {
-    if(this.player.getWeapons().length === this.player.maxEquipment) {
-      console.log('weapons bag is full');
-    } else {
-      let currentWeapon = weapon;
-      this.player.currentEquipment.weapon = null;
-      this.player.unEquip(weapon);
-      this.player.weapons.push(weapon);
+    if(weapon) {
+      if(this.player.getWeapons().length === this.player.maxEquipment) {
+        this.gameService.historyMessage.next(`
+          <p style="color: red;">Weapons bag is full.</p>
+        `);
+      } else {
+        this.audioService.pickWeapon.currentTime = 0;
+        this.audioService.pickWeapon.play();
+        let currentWeapon = weapon;
+        this.player.currentEquipment.weapon = null;
+        this.player.unEquip(weapon);
+        this.player.weapons.push(weapon);
+      }
     }
   }
 
   onArmorSlotClick(armor: Item): void {
-    if(this.player.getArmors().length === this.player.maxEquipment) {
-      console.log('armors bag is full');
-    } else {
-      let currentArmor = armor;
-      this.player.currentEquipment.armor = null;
-      this.player.unEquip(armor);
-      this.player.armors.push(armor);
+    if(armor) {
+      if(this.player.getArmors().length === this.player.maxEquipment) {
+        this.gameService.historyMessage.next(`
+          <p style="color: red;">Armors bag is full.</p>
+        `);
+      } else {
+        this.audioService.pickArmor.currentTime = 0;
+        this.audioService.pickArmor.play();
+        let currentArmor = armor;
+        this.player.currentEquipment.armor = null;
+        this.player.unEquip(armor);
+        this.player.armors.push(armor);
+      }
     }
   }
 
   onShieldSlotClick(shield: Item): void {
-    if(this.player.getShields().length === this.player.maxEquipment) {
-      console.log('shields bag is full');
-    } else {
-      let currentShield = shield;
-      this.player.currentEquipment.shield = null;
-      this.player.unEquip(shield);
-      this.player.shields.push(shield);
+    if(shield) {
+      if(this.player.getShields().length === this.player.maxEquipment) {
+        this.gameService.historyMessage.next(`
+          <p style="color: red;">Shields bag is full.</p>
+        `);
+      } else {
+        this.audioService.pickShield.currentTime = 0;
+        this.audioService.pickShield.play();
+        let currentShield = shield;
+        this.player.currentEquipment.shield = null;
+        this.player.unEquip(shield);
+        this.player.shields.push(shield);
+      }
     }
   }
 
@@ -84,7 +104,24 @@ export class StatusBarComponent implements OnInit {
   }
 
   onPotionClick() {
-    this.player.drinkPotion();
+    this.player.drinkPotion(this.audioService.potion);
+  }
+
+  onHover(item: Item) {
+    if(item) {
+      const itemSpec = `
+      <h3>${item.getName()}</h3>
+      <h4>${item.getType()}: ${item.getGenre()}</h4>
+      <p>Attack bonus: <span>${item.getAtk()}<span></p>
+      <p>Defense bonus: <span>${item.getDef()}<span></p>
+      <p>Hp bonus: <span>${item.getHp()}<span></p>`;
+      
+      this.gameService.info.next(itemSpec);
+    }
+  }
+
+  onLeave() {
+     this.gameService.info.next('');
   }
 
 }

@@ -50,6 +50,17 @@
     <hr>
   </div>
 
-  <div id="info" #info></div>
-
+  <p style="margin: 0; padding: 2px">Infos :</p>
+  <div 
+    id="info"
+    [ngStyle]="{'max-height': tileSize * 4 + 'px', 'height': tileSize * 4 + 'px'}"
+    #info
+    style="overflow: hidden;"></div>
+  <p style="margin: 0; padding: 2px">History Log :</p>
+  <div 
+    id="combat-log"
+    [ngStyle]="{'height': tileSize * 3 + 'px'}"
+    style="overflow-y: scroll;"
+    #combatLog>
+  </div>
 </div>
