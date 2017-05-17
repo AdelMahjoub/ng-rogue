@@ -1,3 +1,4 @@
+import { CameraService } from './../services/camera.service';
 import { AudioService } from 'app/services/audio.service';
 import { GameService } from './../services/game.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private gameService: GameService,
-    private audioService: AudioService) { }
+    private audioService: AudioService,
+    private cameraService: CameraService) { }
 
   gameStatus: string;
   soundEnabled = true;
@@ -19,12 +21,21 @@ export class HeaderComponent implements OnInit {
   help = false;
   dungeonMap = false;
 
+  tileSize: number;
+  width: number;
+  style: {};
+
   ngOnInit() {
      this.gameService.gameStatus.subscribe(
       (status: string) => {
         this.gameStatus = status;
       }
     )
+    this.tileSize = this.gameService.tileSize;
+    this.width = this.cameraService.getWidth();
+    this.style = {
+      width: this.tileSize * this.width + 'px',
+    }
   }
 
   onToggleFog() {
@@ -53,6 +64,9 @@ export class HeaderComponent implements OnInit {
 
   onToggleCredit() {
     this.gameService.gameStatus.next('CREDIT');
+  }
+  onExit() {
+    this.gameService.gameStatus.next('START');
   }
 
 }

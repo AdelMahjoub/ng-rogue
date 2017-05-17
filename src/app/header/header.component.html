@@ -1,7 +1,7 @@
 <nav>
   <div>
     <h1><a href="https://github.com/AdelMahjoub/ng-rogue" target="_blank">ng-rogue</a></h1>
-    <div>
+    <div [ngStyle]="style">
       <button (click)="onToggleHelp()">
         Help
         <span class="led" [ngClass]="help ? 'led-green' : 'led-red'"></span>
@@ -20,6 +20,9 @@
       </button>
       <button (click)="onToggleCredit()" *ngIf="gameStatus !== 'PLAY'">
         Credits
+      </button>
+      <button (click)="onExit()" *ngIf="gameStatus == 'PLAY'" style="float: right">
+        Exit
       </button>
     </div>
   </div>

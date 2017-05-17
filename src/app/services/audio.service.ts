@@ -29,9 +29,9 @@ export class AudioService {
   //Sound tracks
   startScreen = new Audio('./assets/tracks/fcuk-6-drive.mp3');
   ingame1 = new Audio('./assets/tracks/q-28.mp3');
-  ingame3 = new Audio('./assets/tracks/the_wasp_nest.mp3');
+  ingame2 = new Audio('./assets/tracks/the_wasp_nest.mp3');
 
-  credit = new Audio('./assets/tracks/another-mixdown.wav');
+  credit = new Audio('./assets/tracks/another-mixdown.mp3');
   gameOver = new Audio('./assets/tracks/pitchBlack_10.mp3');
 
   sideTracks = [
@@ -41,8 +41,8 @@ export class AudioService {
 
   ingameTracks = [
     this.ingame1,
+    this.ingame2,
     this.startScreen,
-    this.ingame3
   ];
 
   currentTrack = 0;
@@ -65,7 +65,7 @@ export class AudioService {
     this.ingameTracks[this.currentTrack].currentTime = 0;
     this.ingameTracks[this.currentTrack].pause();
     this.currentTrack++;
-    if(this.currentTrack === this.ingameTracks.length - 1) {
+    if(this.currentTrack === this.ingameTracks.length) {
       this.currentTrack = 0;
     }
     this.ingameTracks[this.currentTrack].currentTime = 0;
@@ -73,6 +73,7 @@ export class AudioService {
   }
 
   stopTrackList() {
+    this.currentTrack = 0;
     this.ingameTracks.forEach(track => {
       track.currentTime = 0;
       track.pause();

@@ -148,7 +148,11 @@ export class AppComponent implements OnInit, OnDestroy {
         this.gameService.toggleFog.next();
         break;
       case 'Enter':
-        if(this.gameStatus !== 'PLAY') {
+        if(this.gameStatus === 'WIN') {
+          this.gameService.gameStatus.next(this.gameService.CREDIT);
+        } else if (this.gameStatus === 'END'){
+          this.gameService.gameStatus.next(this.gameService.PLAY);
+        } else if(this.gameStatus === 'START') {
           this.gameService.gameStatus.next(this.gameService.PLAY);
         }
         break;
