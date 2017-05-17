@@ -87,4 +87,8 @@ export class StageComponent implements OnInit, OnDestroy {
     }
   }
 
+  returnToStartScreen() {
+    this.gameService.gameStatus.next('START')
+  }
+
 }

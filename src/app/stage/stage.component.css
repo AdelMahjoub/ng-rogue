@@ -6,7 +6,7 @@
   color: goldenrod;
 }
 
-#start-screen, #end-screen, #win-screen {
+#start-screen, #end-screen, #win-screen, #credit-screen {
   width: inherit;
   height: inherit;
   display: flex;
@@ -36,4 +36,33 @@
 } 
 #help::-webkit-scrollbar-thumb {
   background-color: darkgoldenrod;
+}
+
+a, button {
+  color: goldenrod;
+  border: none;
+  background-color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+
+a:hover {
+  color: gold;
+}
+
+button {
+  border: 1px solid goldenrod;
+  font-size: 10px;
+  padding: 10px;
+  font-family: 'Audiowide', cursive;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(goldenrod, gold);
+  color: black;
+}
+
+button:active {
+  background: linear-gradient( gold, goldenrod);
 }

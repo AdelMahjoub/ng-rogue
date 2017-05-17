@@ -27,16 +27,39 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     
+    this.audioService.startScreen.currentTime = 0;
+    this.audioService.startScreen.play();
+
     window.addEventListener('keydown', this.handleKeyDown.bind(this));
 
     this.gameStatusSubscription = this.gameService.gameStatus.subscribe(
       (status: string) => {
         this.gameStatus = status;
         if(status === 'PLAY') {
+
+          this.audioService.stopSideTracks();
+          this.audioService.stopTrackList();
+          this.audioService.ingame1.play();
+
           this.newGame();
+
           this.gameService.historyMessage.next('');
+
           this.audioService.enterDungeon.currentTime = 0;
           this.audioService.enterDungeon.play();
+
+        } else if(status === 'END') {
+          this.audioService.stopTrackList();
+          this.audioService.stopSideTracks();
+          this.audioService.gameOver.play();
+        } else if(status === 'CREDIT' || status === 'WIN') {
+          this.audioService.stopTrackList();
+          this.audioService.stopSideTracks();
+          this.audioService.credit.play();
+        } else if(status === 'START') {
+          this.audioService.stopTrackList();
+          this.audioService.stopSideTracks();
+          this.audioService.startScreen.play();
         }
       }
     )

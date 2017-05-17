@@ -44,14 +44,15 @@ export class HeaderComponent implements OnInit {
   onToggleSound() {
     this.audioService.toggleSound(this.soundEnabled);
     this.soundEnabled = !this.soundEnabled;
-    this.gameService.historyMessage.next(`
-      <p style="color: lightblue">${this.soundEnabled ? 'sound enabled' : 'sound disabled'}</p>
-    `)
   }
 
   onToggleHelpMap() {
     this.gameService.helperMap.next();
     this.dungeonMap = !this.dungeonMap;
+  }
+
+  onToggleCredit() {
+    this.gameService.gameStatus.next('CREDIT');
   }
 
 }

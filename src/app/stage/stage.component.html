@@ -45,6 +45,32 @@
       </div>
     </ng-container>
 
+    <ng-container *ngSwitchCase="'CREDIT'" id="credit-screen">
+      <div id="win-screen">
+        <table>
+          <tr>
+            <td>Audio tracks</td><td><a href="https://www.freecodecamp.com/the0ffh" target="_blank"><em>Piotr Miłobędzki</em></a></td>
+          </tr>
+          <tr>
+            <td>Game sprites</td><td><a href="https://opengameart.org/content/dungeon-crawl-32x32-tiles" target="_blank"><em>Project Utumno</em></a></td>
+          </tr>
+          <tr>
+             <td>Game Code</td><td><a href="https://www.freecodecamp.com/adelmahjoub" target="_blank"><em>Adel Mahjoub</em></a>
+          </tr>
+        </table>
+        <br>
+        <p style="text-align: center; font-size: 12px; padding: 20px; text-transform: initial; color: white">
+          Part of (or All) the graphic tiles used in this program is the public 
+          domain roguelike tileset "RLTiles".
+          You can find the original tileset at:
+          <a href="http://rltiles.sf.net" target="_blank">rltiles</a>
+        </p>
+        <br>
+        <br>
+        <button (click)="returnToStartScreen()">Return to start screen</button>
+      </div>
+    </ng-container>
+
   </ng-container>
     <div [ngStyle]="{'display': showHelpMap ? 'block' : 'none'}">
       <app-help-map [tileSize]="tileSize"></app-help-map>

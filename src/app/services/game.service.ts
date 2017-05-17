@@ -10,6 +10,7 @@ export class GameService {
   PLAY = 'PLAY';
   END = 'END';
   WIN = 'WIN';
+  CREDIT = 'CREDIT';
 
   gameStatus = new Subject<string>();
   info = new Subject<string>();
