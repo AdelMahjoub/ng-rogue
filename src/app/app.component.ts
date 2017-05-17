@@ -15,7 +15,7 @@ import { CameraService } from './services/camera.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  gameStatus = 'START';
+  gameStatus = 'LOADING';
   gameStatusSubscription: Subscription;
 
   constructor(
@@ -26,11 +26,6 @@ export class AppComponent implements OnInit, OnDestroy {
     private audioService: AudioService) {}
 
   ngOnInit() {
-    
-    this.audioService.startScreen.currentTime = 0;
-    this.audioService.startScreen.play();
-
-    window.addEventListener('keydown', this.handleKeyDown.bind(this));
 
     this.gameStatusSubscription = this.gameService.gameStatus.subscribe(
       (status: string) => {
@@ -39,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
           this.audioService.stopSideTracks();
           this.audioService.stopTrackList();
+          this.audioService.startScreen.loop = false;
           this.audioService.ingame1.play();
 
           this.newGame();
@@ -59,7 +55,11 @@ export class AppComponent implements OnInit, OnDestroy {
         } else if(status === 'START') {
           this.audioService.stopTrackList();
           this.audioService.stopSideTracks();
+          
+          this.audioService.startScreen.currentTime = 0;
+          this.audioService.startScreen.loop = true;
           this.audioService.startScreen.play();
+          window.addEventListener('keydown', this.handleKeyDown.bind(this));
         }
       }
     )

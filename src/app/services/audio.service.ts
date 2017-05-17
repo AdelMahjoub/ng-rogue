@@ -4,6 +4,12 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AudioService {
 
+  constructor() {
+    this.initTrackList();
+    this.initSfx();
+    this.initSideTracks();
+  }
+
   // Special effects
   attack = new Audio('./assets/sfx/attack.mp3');
   enterDungeon = new Audio('./assets/sfx/enter-dungeon.mp3');
@@ -46,12 +52,6 @@ export class AudioService {
   ];
 
   currentTrack = 0;
-
-  constructor() {
-    this.initTrackList();
-    this.initSfx();
-    this.initSideTracks();
-  }
 
   initTrackList() {
     this.ingameTracks.forEach(track => {

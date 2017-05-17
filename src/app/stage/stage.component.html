@@ -3,6 +3,12 @@
   [ngStyle]="style"
   >
   <ng-container [ngSwitch]="gameStatus">
+
+    <ng-container *ngSwitchCase="'LOADING'" id="win-screen">
+      <div id="win-screen">
+        <h1 [innerText]="'LOADING... ' + ((assetsLoaded / assetsToLoad) * 100).toFixed(0) + ' %'"></h1>
+      </div>
+    </ng-container>
       
     <ng-container *ngSwitchCase="'PLAY'">
       <ng-container *ngFor="let screenLine of screen; let x = index">

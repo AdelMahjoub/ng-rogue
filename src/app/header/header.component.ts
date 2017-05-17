@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
     private audioService: AudioService,
     private cameraService: CameraService) { }
 
-  gameStatus: string;
+  gameStatus = 'LOADING';
   soundEnabled = true;
   fog = true;
   help = false;
@@ -64,6 +64,7 @@ export class HeaderComponent implements OnInit {
 
   onToggleCredit() {
     this.gameService.gameStatus.next('CREDIT');
+    this.audioService.toggleSound(!this.soundEnabled);
   }
   onExit() {
     this.gameService.gameStatus.next('START');

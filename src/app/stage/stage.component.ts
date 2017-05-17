@@ -10,6 +10,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class StageComponent implements OnInit, OnDestroy {
 
+  loadingAssetsSubscription: Subscription;
+
+  assetsToLoad: number;
+  assetsLoaded = 0;
+
   gameStatusSubscription: Subscription;
   gameHelpSubscription: Subscription;
   gameFogSubscription: Subscription;
@@ -25,7 +30,7 @@ export class StageComponent implements OnInit, OnDestroy {
 
   public tileSize = 32; // tile scale
   public style: {};
-  public gameStatus = 'START';
+  public gameStatus = 'LOADING';
   public fog = true;
 
   constructor(
@@ -33,6 +38,14 @@ export class StageComponent implements OnInit, OnDestroy {
     private gameService: GameService) {}
 
   ngOnInit() {
+
+    this.assetsToLoad = this.gameService.assetsToLoad;
+
+    this.loadingAssetsSubscription = this.gameService.loadedAssets.subscribe(
+      (loadCounter: number) => {
+        this.assetsLoaded = loadCounter;
+      }
+    )
 
     this.width = this.cameraService.getWidth();
     this.height = this.cameraService.getHeight();
@@ -75,6 +88,7 @@ export class StageComponent implements OnInit, OnDestroy {
     this.gameStatusSubscription.unsubscribe();
     this.gameHelpSubscription.unsubscribe();
     this.gameFogSubscription.unsubscribe();
+    this.loadingAssetsSubscription.unsubscribe();
   }
 
   initscreen(): void {
