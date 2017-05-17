@@ -45,7 +45,7 @@ export const template = {
     walkable: true
   },
   longSword: {
-    population: 2,
+    population: 100,
     className: 'long-sword',
     type: 'item',
     genre: 'weapon',

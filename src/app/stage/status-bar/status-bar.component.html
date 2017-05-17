@@ -58,7 +58,7 @@
       (mouseover)="onHover(player.currentEquipment.weapon)"
       (mouseleave)="onLeave()"
       (contextmenu)="onDiscardEquipment($event, player.currentEquipment.weapon)"
-      style="cursor: pointer">
+      style="cursor: pointer; display: inline-block;">
     <img 
       [width]="tileSize" 
       [height]="tileSize" 
@@ -67,7 +67,7 @@
       (mouseover)="onHover(player.currentEquipment.armor)"
       (mouseleave)="onLeave()"
       (contextmenu)="onDiscardEquipment($event, player.currentEquipment.armor)"
-      style="cursor: pointer">
+      style="cursor: pointer; display: inline-block;">
     <img
       [width]="tileSize" 
       [height]="tileSize" 
@@ -76,7 +76,7 @@
       (mouseover)="onHover(player.currentEquipment.shield)"
       (mouseleave)="onLeave()"
       (contextmenu)="onDiscardEquipment($event, player.currentEquipment.shield)"
-      style="cursor: pointer">
+      style="cursor: pointer; display: inline-block;">
     <div>
       <small style="margin: 0px;">Current Equipment</small>
     </div>
