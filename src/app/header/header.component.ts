@@ -68,6 +68,10 @@ export class HeaderComponent implements OnInit {
   }
   onExit() {
     this.gameService.gameStatus.next('START');
+    if(this.dungeonMap) {
+      this.gameService.helperMap.next();
+      this.dungeonMap = !this.dungeonMap;
+    }
   }
 
 }

@@ -65,11 +65,20 @@
           </tr>
         </table>
         <br>
-        <p style="text-align: center; font-size: 12px; padding: 20px; text-transform: initial; color: white">
-          Part of (or All) the graphic tiles used in this program is the public 
-          domain roguelike tileset "RLTiles".
+        <p style="text-align: center; font-size: 12px; text-transform: initial; color: white">
+          Part of (or All) the graphic tiles used in this program is under <br>
+          the public domain roguelike tileset "RLTiles". <br>
           You can find the original tileset at:
           <a href="http://rltiles.sf.net" target="_blank">rltiles</a>
+        </p>
+        <p style="text-align: center; font-size: 12px;text-transform: initial; color: white">
+          Part of (or All) the sound tracks used in this program are under <br>
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+            Licence Creative Commons Attribution 4.0 International
+          </a>
+          <br>
+          You can find the original sound tracks at:
+          <a href="https://soundcloud.com/ambient-occlusion-ii" target="_blank">soundcloud</a>
         </p>
         <br>
         <br>
@@ -78,10 +87,10 @@
     </ng-container>
 
   </ng-container>
-    <div [ngStyle]="{'display': showHelpMap ? 'block' : 'none'}">
-      <app-help-map [tileSize]="tileSize"></app-help-map>
-    </div>
   
+  <div [ngStyle]="{'display': showHelpMap ? 'block' : 'none'}">
+    <app-help-map [tileSize]="tileSize"></app-help-map>
+  </div>
 
   <div id="help" *ngIf="showHelp">
     <h2>How to play:</h2>

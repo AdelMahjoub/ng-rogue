@@ -107,6 +107,8 @@ export class AppComponent implements OnInit, OnDestroy {
       case 'W':
       case 'z':
       case 'Z':
+      case 'K':
+      case 'k':
         if(this.gameStatus === 'PLAY') {
           this.entityService.tryMovePlayer(0, -1);
           this.cameraService.updatePosition();
@@ -116,6 +118,8 @@ export class AppComponent implements OnInit, OnDestroy {
       case 'ArrowDown':
       case 's':
       case 'S':
+      case 'J':
+      case 'j':
         if(this.gameStatus === 'PLAY') {
           this.entityService.tryMovePlayer(0, 1);
           this.cameraService.updatePosition();
@@ -127,6 +131,8 @@ export class AppComponent implements OnInit, OnDestroy {
       case 'A':
       case 'q':
       case 'Q':
+      case 'h':
+      case 'H':
         if(this.gameStatus === 'PLAY') {
           this.entityService.tryMovePlayer(-1, 0);
           this.cameraService.updatePosition();
@@ -136,6 +142,8 @@ export class AppComponent implements OnInit, OnDestroy {
       case 'ArrowRight':
       case 'd':
       case 'D':
+      case 'L':
+      case 'l':
         if(this.gameStatus === 'PLAY') {
           this.entityService.tryMovePlayer(1, 0);
           this.cameraService.updatePosition();

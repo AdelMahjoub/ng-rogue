@@ -36,7 +36,7 @@ export const template = {
     destructible: true
   },
   healthPotion: {
-    population: 20,
+    population: 15,
     className: 'health-potion',
     type: 'item',
     genre: 'potion',
@@ -45,7 +45,7 @@ export const template = {
     walkable: true
   },
   longSword: {
-    population: 100,
+    population: 2,
     className: 'long-sword',
     type: 'item',
     genre: 'weapon',
