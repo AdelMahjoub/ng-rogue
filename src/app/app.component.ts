@@ -17,6 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   gameStatus = 'LOADING';
   gameStatusSubscription: Subscription;
+  keyboardListenerInit = false;
 
   constructor(
     private dungeonService: DungeonService,
@@ -59,7 +60,10 @@ export class AppComponent implements OnInit, OnDestroy {
           this.audioService.startScreen.currentTime = 0;
           this.audioService.startScreen.loop = true;
           this.audioService.startScreen.play();
-          window.addEventListener('keydown', this.handleKeyDown.bind(this));
+          if(!this.keyboardListenerInit) {
+            window.addEventListener('keydown', this.handleKeyDown.bind(this));
+            this.keyboardListenerInit = true;
+          }
         }
       }
     )
@@ -67,6 +71,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     window.removeEventListener('keydown',this.handleKeyDown);
+    this.keyboardListenerInit = false;
     this.gameStatusSubscription.unsubscribe();
   }
 
