@@ -45,10 +45,10 @@ export class GameService {
     this.assetsToLoad = this.imagesToLoad.length + this.audioToLoad.length;
 
     this.audioToLoad.forEach((asset: HTMLAudioElement) => {
-      asset.addEventListener('loadeddata', () => {
+      asset.addEventListener('canplaythrough', () => {
         this.loadCounter++;
         this.loadedAssets.next(this.loadCounter);
-        if(this.loadCounter >= this.assetsToLoad) {
+        if(this.loadCounter === this.assetsToLoad) {
           this.gameStatus.next(this.START);
         }
       }, false);
@@ -58,7 +58,7 @@ export class GameService {
       asset.addEventListener('load', () => {
         this.loadCounter++;
         this.loadedAssets.next(this.loadCounter);
-        if(this.loadCounter >= this.assetsToLoad) {
+        if(this.loadCounter === this.assetsToLoad) {
           this.gameStatus.next(this.START);
         }
       });
